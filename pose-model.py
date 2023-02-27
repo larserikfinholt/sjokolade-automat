@@ -1,3 +1,4 @@
+import pickle
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier
@@ -31,6 +32,10 @@ classifier = DecisionTreeClassifier(random_state=42)
 
 # Train the classifier on the training data
 classifier.fit(X_train, y_train)
+
+# Save the classifier model to a binary file
+with open('classifier.pickle', 'wb') as f:
+    pickle.dump(classifier, f)
 
 # Use the classifier to make predictions on the test data
 y_pred = classifier.predict(X_test)
