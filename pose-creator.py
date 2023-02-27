@@ -11,7 +11,8 @@ mp_pose = mp.solutions.pose
 start_time = time.time()
 message = "Press space to start capture"
 mode = "wait"
-poses = ["RaiseLeftArm", "RaiseRightArm", "RiseBothArms"]
+# poses = ["RaiseLeftArm", "RaiseRightArm", "RiseBothArms", "Testing"]
+poses = ["Testing"]
 poseNo = 0
 
 isCapture = False
@@ -44,7 +45,7 @@ with mp_pose.Pose(
             mp_pose.POSE_CONNECTIONS,
             landmark_drawing_spec=mp_drawing_styles.get_default_pose_landmarks_style())
         
-        print(results.pose_landmarks)
+        #print(results.pose_landmarks)
         # Flip the image horizontally for a selfie-view display.
         image = cv2.flip(image, 1)
         image = cv2.putText(image, message, (50, 50),
@@ -74,7 +75,7 @@ with mp_pose.Pose(
         if mode == "capture" and elapsed_time >= 3:
             message = "Press space to start capture"
             mode = "wait"
-            with open("./data/" + poses[poseNo]+".csv", "w") as file:
+            with open("./data/" + poses[poseNo]+".csv", "w", newline='') as file:
                 writer = csv.writer(file, delimiter=';')
                 for arr in captureArray:
                     tallArr = []
