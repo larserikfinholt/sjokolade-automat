@@ -43,6 +43,8 @@ with mp_pose.Pose(
             results.pose_landmarks,
             mp_pose.POSE_CONNECTIONS,
             landmark_drawing_spec=mp_drawing_styles.get_default_pose_landmarks_style())
+        
+        print(results.pose_landmarks)
         # Flip the image horizontally for a selfie-view display.
         image = cv2.flip(image, 1)
         image = cv2.putText(image, message, (50, 50),
